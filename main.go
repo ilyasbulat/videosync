@@ -40,7 +40,7 @@ type recordInfo struct {
 
 func main() {
 	fmt.Println("Video updating from API")
-	url := os.Getenv("URL") + getMac("wlan0")
+	url := "https://media-service.kz/api/videolist/" + getMac("wlan0")
 	fmt.Println(url)
 	resp, err := http.Get(url)
 	if err != nil {
@@ -72,7 +72,7 @@ func main() {
 		id := strconv.Itoa(record.ID)
 		md5 := record.MD5
 		order := record.Order
-		downloadURL := os.Getenv("DURL") + link
+		downloadURL := "https://media-service.kz/storage/" + link
 		name := fmt.Sprintf("%04d", order) + "_" + id + ".mp4"
 
 		path := dir + name
